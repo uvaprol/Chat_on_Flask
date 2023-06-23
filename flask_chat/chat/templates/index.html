@@ -1,0 +1,39 @@
+<!DOCTYPE html5>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flask chat</title>
+
+    <link rel="stylesheet"  type="text/css" href="{{url_for('static', filename='style/style.css')}}">
+
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script src="static/scripts/script.js"></script>
+
+
+
+</head>
+
+<body>
+    <input id="name" value="anonimus" style="display: none;">
+    <div class="container">
+        <div id="chat_window" class="chat">
+
+        </div>
+
+        <div class="sendingArea">
+            <input id="text" type="text" placeholder="Текст сообщения">
+            <button id="button" onclick="sendMessage()"></button>
+        </div>
+
+    </div>
+</body>
+
+
+</html>
