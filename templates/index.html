@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/general.css">
+    <link rel="stylesheet" href="../static/style/entrance.css">
+    <title>Авторизация</title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script src="../static/scripts/entrance.js"></script>
+</head>
+<body>
+    <div class="form">
+        <p id="warning">Имя уже занято</p>
+        <input type="text" name="login" id="login" placeholder="login">
+        <input type="password" name="password" id="password" placeholder="password">
+        <button id="sub_btn" onclick="subscribe()">Вход</button>
+        <p id="swaper" onclick="switch_mode()">Регистрация</p>
+    </div>
+</body>
+
+</html>
