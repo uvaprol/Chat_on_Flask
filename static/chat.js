@@ -9,14 +9,14 @@ function Send(){
         const hour = now.getHours()
         const minutes = now.getMinutes()
         const day = now.getDate()
-        const mounth = now.getMonth()
+        const month = now.getMonth()
         const year = now.getFullYear()
         CHAT.innerHTML += `
         <div class = "message">
             <b class = "name">
-                User
+                ${localStorage.getItem('login')}
                 <i class = "name">
-                    ${hour}:${minutes}  ${day}/${mounth + 1}/${year}
+                    ${hour}:${minutes}  ${day}/${month + 1}/${year}
                 </i>
             </b>
             <br>

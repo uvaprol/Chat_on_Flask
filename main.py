@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect
 import sqlite3
 
-USERS = {}
+USERS = {'admin': 'admin'}
 
 app = Flask(__name__)
 
@@ -9,9 +9,16 @@ app = Flask(__name__)
 def main():
     return render_template('enter.html')
 
-@app.route('/chat')
+@app.route('/chat', methods=['GET', 'POST'])
 def open_chat():
-    return render_template('chat.html')
+    if request.method == 'GET':
+        print(request.args.get('login'))
+        if USERS.get(request.args.get('login')):
+            return render_template('chat.html')
+        else:
+            return redirect('/login')
+    elif request.method == 'POST':
+        print(request.form)
 
 @app.route('/login')
 def registration():
@@ -22,11 +29,14 @@ def check_registration():
     if request.method == 'POST':
         login = request.form.get('login')
         password = request.form.get('password')
+        print(login, password)
         if USERS.get(login):
-            return 400
-        else:
             USERS[login] = password
-            redirect('/chat')
+            return jsonify({'redirect': '/chat'}), 200
+        else:
+            return jsonify({'error': 'Bad data'}), 400
+    else:
+        return jsonify({'error': 'Bad method'}), 400
 
 @app.route('/checkLog', methods=['POST'])
 def check_login():
