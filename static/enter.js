@@ -19,28 +19,28 @@ form.addEventListener('keydown', (event) => {
 function checkAutoEnter(){
     login.value = localStorage.getItem('login')
     password.value = localStorage.getItem('password')
-//    if (localStorage.getItem('login') && localStorage.getItem('password')){
-//        console.log(localStorage.getItem('login'))
-//    } else {
-//        console.log('No logs')
-//    }
+    if (localStorage.getItem('login') && localStorage.getItem('password')){
+        console.log(localStorage.getItem('login'))
+    } else {
+        console.log('No logs')
+    }
 }
 
 function serverResponse(){
-     $.ajax({
-            url: '/checkReg',
-            type: 'POST',
-            data: {
-                'login': localStorage.getItem('login'),
-                'password': localStorage.getItem('password')
-            },
-            success: (response) => {
-                window.location.href = `${response.redirect}?login=${localStorage.getItem('login')}`
-            },
-            error: (response) => {
-                console.log(response.responseJSON.error)
-            }
-        });
+    $.ajax({
+        url: '/checkLog',
+        type: 'POST',
+        data: {
+            'login': localStorage.getItem('login'),
+            'password': localStorage.getItem('password')
+        },
+        success: (response) => {
+            window.location.href = `${response.redirect}?login=${localStorage.getItem('login')}`
+        },
+        error: (response) => {
+            console.log(response.responseJSON.error)
+        }
+    })
 }
 
 checkAutoEnter()
